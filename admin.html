@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel – Maramadakki</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="admin-page">
+    <header class="admin-header">
+      <h1>Maramadakki Admin Panel</h1>
+      <button id="adminLogoutBtn" class="contact-submit-btn">Logout</button>
+    </header>
+
+    <main class="admin-main">
+      <section class="admin-section">
+        <h2>News Management</h2>
+        <form id="newsForm" class="contact-form">
+          <div class="form-row">
+            <label for="newsTitle">Title</label>
+            <input id="newsTitle" type="text" required />
+          </div>
+          <div class="form-row">
+            <label for="newsDescription">Description</label>
+            <textarea id="newsDescription" rows="2" required></textarea>
+          </div>
+          <button type="submit" class="contact-submit-btn">Add News</button>
+        </form>
+        <div class="admin-list" id="newsList"></div>
+      </section>
+
+      <section class="admin-section">
+        <h2>Gallery Management</h2>
+        <form id="galleryForm" class="contact-form">
+          <div class="form-row">
+            <label for="galleryImageFile">Upload image from your device</label>
+            <input id="galleryImageFile" type="file" accept="image/*" required />
+          </div>
+          <div class="form-row">
+            <label for="galleryImageAlt">Alt text</label>
+            <input id="galleryImageAlt" type="text" />
+          </div>
+          <button type="submit" class="contact-submit-btn">Add Image</button>
+        </form>
+        <div class="admin-list" id="galleryList"></div>
+      </section>
+
+      <section class="admin-section">
+        <h2>Video Management</h2>
+        <form id="videoForm" class="contact-form">
+          <div class="form-row">
+            <label for="videoFile">Upload video from your device</label>
+            <input id="videoFile" type="file" accept="video/*" required />
+          </div>
+          <button type="submit" class="contact-submit-btn">Save Video</button>
+        </form>
+        <p class="auth-note">
+          Note: The video is stored only in this browser using local storage. Large
+          files may not work due to browser size limits.
+        </p>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login – Maramadakki</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="admin-login-page">
+      <div class="auth-card">
+        <h2>Admin Login</h2>
+        <p>Only authorized members of the village council can access this area.</p>
+        <form id="adminLoginForm" class="contact-form">
+          <div class="form-row">
+            <label for="adminUsername">Username</label>
+            <input
+              type="text"
+              id="adminUsername"
+              name="username"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="adminPassword">Password</label>
+            <input
+              type="password"
+              id="adminPassword"
+              name="password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <button type="submit" class="contact-submit-btn">Login</button>
+          <p id="adminLoginError" class="auth-note" style="display: none; color: #c0392b;">
+            Invalid credentials. Please try again.
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script src="admin-login.js"></script>
+  </body>
+</html>
+
