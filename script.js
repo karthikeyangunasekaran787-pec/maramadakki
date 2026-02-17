@@ -2,19 +2,17 @@ const sections = Array.from(document.querySelectorAll('.site-section'));
 const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
 const exploreBtn = document.querySelector('.explore-btn');
 
-// Hide admin login link until the village logo is clicked
-const adminNavLink = document.querySelector('.main-nav a[data-target="login"], .main-nav a[href="admin-login.html"]');
-if (adminNavLink) adminNavLink.classList.add('hidden');
-
 const logoEl = document.querySelector('.logo');
 if (logoEl) {
   logoEl.style.cursor = 'pointer';
+  // Single click — go to home (no admin shortcuts)
   logoEl.addEventListener('click', () => {
-    setActiveSection('login');
-    if (adminNavLink) {
-      adminNavLink.classList.remove('hidden');
-      setTimeout(() => adminNavLink.classList.add('hidden'), 15000);
-    }
+    setActiveSection('home');
+  });
+
+  // Double-click the logo to open the admin login page
+  logoEl.addEventListener('dblclick', () => {
+    window.location.href = 'admin-login.html';
   });
 }
 
@@ -44,21 +42,68 @@ navLinks.forEach((link) => {
 // Mobile menu toggle behaviour
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
+
+function createNavBackdrop() {
+  let backdrop = document.querySelector('.nav-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'nav-backdrop';
+    backdrop.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(backdrop);
+  }
+  return backdrop;
+}
+
 if (menuToggle && mainNav) {
+  const backdrop = createNavBackdrop();
+
+  const openMenu = () => {
+    menuToggle.setAttribute('aria-expanded', 'true');
+    mainNav.classList.add('open');
+    backdrop.classList.add('visible');
+    // move focus to first link for accessibility
+    const firstLink = mainNav.querySelector('a');
+    if (firstLink) firstLink.focus();
+  };
+
+  const closeMenu = () => {
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('open');
+    backdrop.classList.remove('visible');
+    menuToggle.focus();
+  };
+
   menuToggle.addEventListener('click', () => {
     const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-    menuToggle.setAttribute('aria-expanded', String(!expanded));
-    mainNav.classList.toggle('open', !expanded);
+    if (expanded) closeMenu(); else openMenu();
   });
 
   // Close menu when a nav link is clicked (mobile)
   navLinks.forEach((link) => {
     link.addEventListener('click', () => {
       if (window.innerWidth <= 768 && mainNav.classList.contains('open')) {
-        mainNav.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
+        closeMenu();
       }
     });
+  });
+
+  // Clicking the backdrop closes the menu
+  backdrop.addEventListener('click', () => {
+    if (mainNav.classList.contains('open')) closeMenu();
+  });
+
+  // Allow Escape to close the menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mainNav.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+
+  // Close menu if viewport is resized larger than mobile
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && mainNav.classList.contains('open')) {
+      closeMenu();
+    }
   });
 }
 
