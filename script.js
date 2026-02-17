@@ -2,6 +2,22 @@ const sections = Array.from(document.querySelectorAll('.site-section'));
 const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
 const exploreBtn = document.querySelector('.explore-btn');
 
+// Hide admin login link until the village logo is clicked
+const adminNavLink = document.querySelector('.main-nav a[data-target="login"], .main-nav a[href="admin-login.html"]');
+if (adminNavLink) adminNavLink.classList.add('hidden');
+
+const logoEl = document.querySelector('.logo');
+if (logoEl) {
+  logoEl.style.cursor = 'pointer';
+  logoEl.addEventListener('click', () => {
+    setActiveSection('login');
+    if (adminNavLink) {
+      adminNavLink.classList.remove('hidden');
+      setTimeout(() => adminNavLink.classList.add('hidden'), 15000);
+    }
+  });
+}
+
 const setActiveSection = (targetId) => {
   sections.forEach((section) => {
     section.classList.toggle('active', section.id === targetId);
@@ -24,6 +40,27 @@ navLinks.forEach((link) => {
     }
   });
 });
+
+// Mobile menu toggle behaviour
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('.main-nav');
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener('click', () => {
+    const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!expanded));
+    mainNav.classList.toggle('open', !expanded);
+  });
+
+  // Close menu when a nav link is clicked (mobile)
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768 && mainNav.classList.contains('open')) {
+        mainNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+}
 
 if (exploreBtn) {
   exploreBtn.addEventListener('click', () => setActiveSection(exploreBtn.dataset.target || 'news'));
