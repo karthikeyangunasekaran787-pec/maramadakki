@@ -12,6 +12,25 @@ const NEWS_KEY = 'maramadakki_news_items';
 const GALLERY_KEY = 'maramadakki_gallery_items';
 const VIDEO_KEY = 'maramadakki_video_url';
 
+// utility to keep localStorage data in sync with the server API
+async function syncWithServer(updateFn) {
+  try {
+    // fetch current remote state (if available)
+    const resp = await fetch('/api/data');
+    const serverData = resp.ok ? await resp.json() : {};
+    // allow caller to make modifications to object
+    updateFn(serverData);
+    // send entire object back to server
+    await fetch('/api/data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(serverData),
+    });
+  } catch (e) {
+    console.warn('Could not sync with server:', e);
+  }
+}
+
 const loadJson = (key, fallback) => {
   try {
     const raw = localStorage.getItem(key);
@@ -112,9 +131,22 @@ window.addEventListener('load', () => {
     });
   }
 
-  // Initial data
+  // Initial data: prefer server values if reachable
   let newsItems = loadJson(NEWS_KEY, []);
   let galleryItems = loadJson(GALLERY_KEY, []);
+
+  // try to bootstrap from remote
+  try {
+    const resp = await fetch('/api/data');
+    if (resp.ok) {
+      const remote = await resp.json();
+      if (Array.isArray(remote.newsItems)) newsItems = remote.newsItems;
+      if (Array.isArray(remote.galleryItems)) galleryItems = remote.galleryItems;
+      if (remote.videoUrl) localStorage.setItem(VIDEO_KEY, remote.videoUrl);
+    }
+  } catch (e) {
+    // ignore network errors
+  }
 
   renderNewsList(newsItems);
   renderGalleryList(galleryItems);
@@ -131,6 +163,10 @@ window.addEventListener('load', () => {
 
       newsItems = [...newsItems, { title, description }];
       saveJson(NEWS_KEY, newsItems);
+      // also update remote data if possible
+      syncWithServer((data) => {
+        data.newsItems = newsItems;
+      });
       renderNewsList(newsItems);
 
       if (titleEl) titleEl.value = '';
@@ -155,6 +191,9 @@ window.addEventListener('load', () => {
 
         galleryItems = [...galleryItems, { src, alt }];
         saveJson(GALLERY_KEY, galleryItems);
+        syncWithServer((data) => {
+          data.galleryItems = galleryItems;
+        });
         renderGalleryList(galleryItems);
 
         // Reset inputs
@@ -179,6 +218,10 @@ window.addEventListener('load', () => {
         if (!dataUrl) return;
 
         localStorage.setItem(VIDEO_KEY, dataUrl);
+        // push to server as well
+        syncWithServer((data) => {
+          data.videoUrl = dataUrl;
+        });
         if (fileInput) fileInput.value = '';
         alert('Video saved. Refresh the main site to see the change.');
       };

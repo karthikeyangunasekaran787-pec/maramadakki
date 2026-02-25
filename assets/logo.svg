@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="100%" height="100%" fill="#fff"/>
+  <g font-family="Nunito, sans-serif">
+    <circle cx="80" cy="100" r="60" fill="#2f8f83" />
+    <path d="M35 100 L80 60 L125 100 Z" fill="#f7b733" />
+    <text x="160" y="115" font-weight="800" font-size="42" fill="#1d6b42">MARAMADAKKI</text>
+    <text x="160" y="150" font-size="20" fill="#6b3f24">மரமடக்‌கி</text>
+  </g>
+</svg>

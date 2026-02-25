@@ -61,6 +61,7 @@ if (menuToggle && mainNav) {
     menuToggle.setAttribute('aria-expanded', 'true');
     mainNav.classList.add('open');
     backdrop.classList.add('visible');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
     // move focus to first link for accessibility
     const firstLink = mainNav.querySelector('a');
     if (firstLink) firstLink.focus();
@@ -70,6 +71,7 @@ if (menuToggle && mainNav) {
     menuToggle.setAttribute('aria-expanded', 'false');
     mainNav.classList.remove('open');
     backdrop.classList.remove('visible');
+    document.body.style.overflow = ''; // restore scroll
     menuToggle.focus();
   };
 
@@ -208,14 +210,13 @@ if (contactForm) {
   });
 }
 
-// Apply admin-managed content (news, gallery, video) from localStorage
-function applyAdminContentOverrides() {
+// Apply admin-managed content (news, gallery, video) from localStorage or remote API
+async function applyAdminContentOverrides() {
   try {
-    // News cards
-    const newsContainer = document.querySelector('#news .card-grid');
-    const storedNews = localStorage.getItem('maramadakki_news_items');
-    if (newsContainer && storedNews) {
-      const items = JSON.parse(storedNews);
+    // helper that renders the news array into the page
+    const renderNews = (items) => {
+      const newsContainer = document.querySelector('#news .card-grid');
+      if (!newsContainer) return;
       if (Array.isArray(items) && items.length > 0) {
         newsContainer.innerHTML = '';
         items.forEach((item) => {
@@ -233,13 +234,12 @@ function applyAdminContentOverrides() {
           newsContainer.appendChild(article);
         });
       }
-    }
+    };
 
-    // Gallery images
-    const galleryContainer = document.querySelector('#gallery .gallery-grid');
-    const storedGallery = localStorage.getItem('maramadakki_gallery_items');
-    if (galleryContainer && storedGallery) {
-      const images = JSON.parse(storedGallery);
+    // gallery renderer
+    const renderGallery = (images) => {
+      const galleryContainer = document.querySelector('#gallery .gallery-grid');
+      if (!galleryContainer) return;
       if (Array.isArray(images) && images.length > 0) {
         galleryContainer.innerHTML = '';
         images.forEach((img) => {
@@ -251,30 +251,59 @@ function applyAdminContentOverrides() {
           galleryContainer.appendChild(figure);
         });
       }
+    };
+
+    // video renderer
+    const renderVideo = (url) => {
+      if (!url) return;
+      const videoContainer = document.querySelector('#video .video-embed');
+      if (!videoContainer) return;
+      if (url.startsWith('data:video')) {
+        videoContainer.innerHTML = '';
+        const videoEl = document.createElement('video');
+        videoEl.controls = true;
+        videoEl.src = url;
+        videoEl.style.width = '100%';
+        videoEl.style.height = '100%';
+        videoContainer.appendChild(videoEl);
+      } else {
+        const videoIframe = videoContainer.querySelector('iframe');
+        if (videoIframe) videoIframe.src = url;
+      }
+    };
+
+    // try loading from remote API first
+    let remoteData;
+    try {
+      const resp = await fetch('/api/data');
+      if (resp.ok) {
+        remoteData = await resp.json();
+      }
+    } catch (e) {
+      // network failure, fall back to localStorage
     }
 
-    // Video URL / uploaded video
+    if (remoteData) {
+      renderNews(remoteData.newsItems || []);
+      renderGallery(remoteData.galleryItems || []);
+      renderVideo(remoteData.videoUrl || '');
+      return;
+    }
+
+    // fallback: localStorage only
+    const storedNews = localStorage.getItem('maramadakki_news_items');
+    if (storedNews) {
+      renderNews(JSON.parse(storedNews));
+    }
+
+    const storedGallery = localStorage.getItem('maramadakki_gallery_items');
+    if (storedGallery) {
+      renderGallery(JSON.parse(storedGallery));
+    }
+
     const storedVideoUrl = localStorage.getItem('maramadakki_video_url');
     if (storedVideoUrl) {
-      const videoContainer = document.querySelector('#video .video-embed');
-      if (videoContainer) {
-        // If this is a data URL from an uploaded file, render a <video> element
-        if (storedVideoUrl.startsWith('data:video')) {
-          videoContainer.innerHTML = '';
-          const videoEl = document.createElement('video');
-          videoEl.controls = true;
-          videoEl.src = storedVideoUrl;
-          videoEl.style.width = '100%';
-          videoEl.style.height = '100%';
-          videoContainer.appendChild(videoEl);
-        } else {
-          // Otherwise, treat it as an iframe URL (e.g., YouTube embed)
-          const videoIframe = videoContainer.querySelector('iframe');
-          if (videoIframe) {
-            videoIframe.src = storedVideoUrl;
-          }
-        }
-      }
+      renderVideo(storedVideoUrl);
     }
   } catch (err) {
     console.error('Failed to apply admin content overrides:', err);
