@@ -1,3 +1,8 @@
+// storage keys used for admin content (must match admin.js)
+const NEWS_KEY = 'maramadakki_news_items';
+const GALLERY_KEY = 'maramadakki_gallery_items';
+const VIDEO_KEY = 'maramadakki_video_url';
+
 const sections = Array.from(document.querySelectorAll('.site-section'));
 const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
 const exploreBtn = document.querySelector('.explore-btn');
@@ -80,10 +85,11 @@ if (menuToggle && mainNav) {
     if (expanded) closeMenu(); else openMenu();
   });
 
-  // Close menu when a nav link is clicked (mobile)
+  // Close menu when a nav link is clicked (mobile or resized state)
   navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768 && mainNav.classList.contains('open')) {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation(); // prevent the backdrop from also handling the click
+      if (mainNav.classList.contains('open')) {
         closeMenu();
       }
     });
@@ -210,7 +216,9 @@ if (contactForm) {
   });
 }
 
-// Apply admin-managed content (news, gallery, video) from localStorage or remote API
+// Apply admin-managed content (news, gallery, video) from localStorage or
+// remote backend. the remote backend may be Firebase or the existing node
+// api; both are handled transparently.
 async function applyAdminContentOverrides() {
   try {
     // helper that renders the news array into the page
@@ -272,7 +280,34 @@ async function applyAdminContentOverrides() {
       }
     };
 
-    // try loading from remote API first
+    // when Firebase is available, we rely on realtime listeners instead of
+    // polling the REST endpoint. the listeners update localStorage and the
+    // DOM automatically, so we can just return immediately.
+    if (typeof firebaseDB !== 'undefined') {
+      firebaseDB.ref('newsItems').on('value', (snap) => {
+        const items = snap.val() || [];
+        localStorage.setItem(NEWS_KEY, JSON.stringify(items));
+        renderNews(items);
+      });
+      firebaseDB.ref('galleryItems').on('value', (snap) => {
+        const items = snap.val() || [];
+        localStorage.setItem(GALLERY_KEY, JSON.stringify(items));
+        renderGallery(items);
+      });
+      firebaseDB.ref('videoUrl').on('value', (snap) => {
+        const url = snap.val() || '';
+        if (url) {
+          localStorage.setItem(VIDEO_KEY, url);
+          renderVideo(url);
+        }
+      });
+      // nothing more to do — realtime listeners will update the page as data
+      // changes on the server.  early return ensures we don't hit the
+      // legacy REST fallback below.
+      return;
+    }
+
+    // legacy behavior: try loading from remote API first
     let remoteData;
     try {
       const resp = await fetch('/api/data');
@@ -284,24 +319,41 @@ async function applyAdminContentOverrides() {
     }
 
     if (remoteData) {
-      renderNews(remoteData.newsItems || []);
-      renderGallery(remoteData.galleryItems || []);
-      renderVideo(remoteData.videoUrl || '');
+      // if remote doesn't have certain arrays, fall back to whatever is in localStorage
+      const storedNews = localStorage.getItem(NEWS_KEY);
+      const storedGallery = localStorage.getItem(GALLERY_KEY);
+      const storedVideoUrl = localStorage.getItem(VIDEO_KEY);
+
+      const newsItems = Array.isArray(remoteData.newsItems)
+        ? remoteData.newsItems
+        : storedNews
+        ? JSON.parse(storedNews)
+        : [];
+      const galleryItems = Array.isArray(remoteData.galleryItems)
+        ? remoteData.galleryItems
+        : storedGallery
+        ? JSON.parse(storedGallery)
+        : [];
+      const videoUrl = remoteData.videoUrl || storedVideoUrl || '';
+
+      renderNews(newsItems);
+      renderGallery(galleryItems);
+      renderVideo(videoUrl);
       return;
     }
 
     // fallback: localStorage only
-    const storedNews = localStorage.getItem('maramadakki_news_items');
+    const storedNews = localStorage.getItem(NEWS_KEY);
     if (storedNews) {
       renderNews(JSON.parse(storedNews));
     }
 
-    const storedGallery = localStorage.getItem('maramadakki_gallery_items');
+    const storedGallery = localStorage.getItem(GALLERY_KEY);
     if (storedGallery) {
       renderGallery(JSON.parse(storedGallery));
     }
 
-    const storedVideoUrl = localStorage.getItem('maramadakki_video_url');
+    const storedVideoUrl = localStorage.getItem(VIDEO_KEY);
     if (storedVideoUrl) {
       renderVideo(storedVideoUrl);
     }
@@ -311,3 +363,26 @@ async function applyAdminContentOverrides() {
 }
 
 window.addEventListener('load', applyAdminContentOverrides);
+
+// when other tabs (e.g. admin panel) modify localStorage we want the
+// displayed news/gallery/video to refresh immediately so visitors don't
+// have to manually reload the page.
+window.addEventListener('storage', (e) => {
+  if (
+    e.key === NEWS_KEY ||
+    e.key === GALLERY_KEY ||
+    e.key === VIDEO_KEY
+  ) {
+    applyAdminContentOverrides();
+  }
+});
+
+// periodically poll the server for updates so that *all* visitors see
+// admin changes without needing to refresh. 30‑second interval is a
+// reasonable compromise for low‑traffic static sites.  When Firebase is
+// configured we rely on realtime listeners and don't poll.
+if (typeof firebaseDB === 'undefined') {
+  setInterval(() => {
+    applyAdminContentOverrides();
+  }, 30000);
+}

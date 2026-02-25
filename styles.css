@@ -498,6 +498,14 @@ th {
   color: darkgreen;
 }
 
+/* keep the toggle color consistent after interaction */
+.menu-toggle:focus,
+.menu-toggle:active,
+.menu-toggle[aria-expanded="true"] {
+  color: green;
+  outline: none;
+}
+
 .auth-overlay.hidden {
   display: none;
 }
@@ -600,8 +608,15 @@ th {
 
 @media (max-width: 768px) {
   .site-header {
-    flex-direction: column;
+    /* keep header layout as row so toggle can float right */
+    flex-direction: row;
     gap: 0.5rem;
+    position: relative;
+  }
+  .menu-toggle {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
   }
 
   /* show hamburger, hide links initially */
@@ -627,7 +642,12 @@ th {
     padding: 1rem 0;
     gap: 0.5rem;
     z-index: 1001;
-  }
+}
+
+/* ensure links are always tappable when menu is open */
+.main-nav.open a {
+    pointer-events: auto;
+}
 
   .nav-backdrop {
     position: fixed;
@@ -636,7 +656,8 @@ th {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease;
-    z-index: 1000;
+    /* make sure the backdrop sits below header/nav so links remain clickable */
+    z-index: 900;
   }
   .nav-backdrop.visible {
     opacity: 1;

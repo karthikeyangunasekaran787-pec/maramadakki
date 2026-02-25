@@ -12,22 +12,43 @@ const NEWS_KEY = 'maramadakki_news_items';
 const GALLERY_KEY = 'maramadakki_gallery_items';
 const VIDEO_KEY = 'maramadakki_video_url';
 
-// utility to keep localStorage data in sync with the server API
+// utility to keep localStorage data in sync with the remote backend.
+// when Firebase is available we use Realtime Database; otherwise the
+// previous Express `/api/data` endpoint is used as a fallback.
 async function syncWithServer(updateFn) {
+  const statusEl = document.getElementById('syncStatus');
+  const setStatus = (message, success = true) => {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.style.color = success ? 'green' : '#c0392b';
+  };
+
   try {
-    // fetch current remote state (if available)
-    const resp = await fetch('/api/data');
-    const serverData = resp.ok ? await resp.json() : {};
-    // allow caller to make modifications to object
+    let serverData = {};
+    if (typeof firebaseDB !== 'undefined') {
+      const snap = await firebaseDB.ref('/').once('value');
+      serverData = snap.val() || {};
+    } else {
+      const resp = await fetch('/api/data');
+      serverData = resp.ok ? await resp.json() : {};
+    }
+
     updateFn(serverData);
-    // send entire object back to server
-    await fetch('/api/data', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(serverData),
-    });
+
+    if (typeof firebaseDB !== 'undefined') {
+      await firebaseDB.ref('/').set(serverData);
+    } else {
+      await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(serverData),
+      });
+    }
+
+    setStatus('Synchronized with backend', true);
   } catch (e) {
     console.warn('Could not sync with server:', e);
+    setStatus('Unable to reach backend; changes saved locally only', false);
   }
 }
 
@@ -77,6 +98,10 @@ const renderNewsList = (items) => {
       const updated = items.filter((_, i) => i !== index);
       saveJson(NEWS_KEY, updated);
       renderNewsList(updated);
+      // propagate removal to server as well
+      syncWithServer((data) => {
+        data.newsItems = updated;
+      });
     });
 
     row.appendChild(text);
@@ -112,6 +137,9 @@ const renderGalleryList = (items) => {
       const updated = items.filter((_, i) => i !== index);
       saveJson(GALLERY_KEY, updated);
       renderGalleryList(updated);
+      syncWithServer((data) => {
+        data.galleryItems = updated;
+      });
     });
 
     row.appendChild(text);
@@ -120,7 +148,7 @@ const renderGalleryList = (items) => {
   });
 };
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   ensureAdminAuthenticated();
 
   const logoutBtn = document.getElementById('adminLogoutBtn');
@@ -131,25 +159,53 @@ window.addEventListener('load', () => {
     });
   }
 
-  // Initial data: prefer server values if reachable
+  // Initial data: load from localStorage first
   let newsItems = loadJson(NEWS_KEY, []);
   let galleryItems = loadJson(GALLERY_KEY, []);
 
-  // try to bootstrap from remote
-  try {
-    const resp = await fetch('/api/data');
-    if (resp.ok) {
-      const remote = await resp.json();
-      if (Array.isArray(remote.newsItems)) newsItems = remote.newsItems;
-      if (Array.isArray(remote.galleryItems)) galleryItems = remote.galleryItems;
-      if (remote.videoUrl) localStorage.setItem(VIDEO_KEY, remote.videoUrl);
-    }
-  } catch (e) {
-    // ignore network errors
+  // if Firebase is configured, display an indicator and subscribe for real‑time updates
+  const backendEl = document.getElementById('backendIndicator');
+  if (typeof firebaseDB !== 'undefined') {
+    if (backendEl) backendEl.textContent = 'Connected to Firebase realtime database';
+
+    firebaseDB.ref('newsItems').on('value', (snap) => {
+      newsItems = snap.val() || [];
+      saveJson(NEWS_KEY, newsItems);
+      renderNewsList(newsItems);
+    });
+
+    firebaseDB.ref('galleryItems').on('value', (snap) => {
+      galleryItems = snap.val() || [];
+      saveJson(GALLERY_KEY, galleryItems);
+      renderGalleryList(galleryItems);
+    });
+
+    firebaseDB.ref('videoUrl').on('value', (snap) => {
+      const url = snap.val();
+      if (url) {
+        localStorage.setItem(VIDEO_KEY, url);
+      }
+    });
+  } else {
+    if (backendEl) backendEl.textContent = 'Using local server (/api/data) or localStorage';
   }
 
-  renderNewsList(newsItems);
-  renderGalleryList(galleryItems);
+  // if Firebase is not available, fall back to pulling from existing API
+  if (typeof firebaseDB === 'undefined') {
+    try {
+      const resp = await fetch('/api/data');
+      if (resp.ok) {
+        const remote = await resp.json();
+        if (Array.isArray(remote.newsItems)) newsItems = remote.newsItems;
+        if (Array.isArray(remote.galleryItems)) galleryItems = remote.galleryItems;
+        if (remote.videoUrl) localStorage.setItem(VIDEO_KEY, remote.videoUrl);
+      }
+    } catch (e) {
+      console.error('Admin load error fetching /api/data', e);
+    }
+    renderNewsList(newsItems);
+    renderGalleryList(galleryItems);
+  }
 
   const newsForm = document.getElementById('newsForm');
   if (newsForm) {

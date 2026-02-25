@@ -60,20 +60,8 @@
         <div class="announcement-board">
           🔔 Village Meeting on Nov 15 at 5 PM near the temple.
         </div>
-        <div class="card-grid">
-          <article class="card">
-            <h3>School Reopening</h3>
-            <p>Primary school reopens on Nov 20 with new safety measures.</p>
-          </article>
-          <article class="card">
-            <h3>Water Tank Cleaning</h3>
-            <p>Scheduled maintenance on Nov 18 – store sufficient water.</p>
-          </article>
-          <article class="card">
-            <h3>New Bus Schedule</h3>
-            <p>Updated timings to Trichy town every 45 minutes.</p>
-          </article>
-        </div>
+        <!-- news items injected by JavaScript; leave grid empty initially -->
+        <div class="card-grid"></div>
       </section>
 
       <section id="about" class="site-section">
@@ -962,6 +950,10 @@
       </section>
     </main>
 
+    <!-- firebase SDKs (compat libraries for Realtime Database) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

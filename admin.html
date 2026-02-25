@@ -17,6 +17,9 @@
       <h1>Maramadakki Admin Panel</h1>
       <button id="adminLogoutBtn" class="contact-submit-btn">Logout</button>
     </header>
+    <!-- status messages about synchronisation -->
+    <p id="syncStatus" class="auth-note" style="padding:0 2rem; text-align:center;"></p>
+    <p id="backendIndicator" class="auth-note" style="padding:0 2rem; text-align:center;"></p>
 
     <main class="admin-main">
       <section class="admin-section">
@@ -67,6 +70,10 @@
       </section>
     </main>
 
+    <!-- firebase SDKs (compat) for admin sync -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="admin.js"></script>
   </body>
 </html>
