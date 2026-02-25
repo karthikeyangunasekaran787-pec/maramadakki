@@ -70,10 +70,22 @@
       </section>
     </main>
 
-    <!-- firebase SDKs (compat) for admin sync -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-    <script src="firebase-config.js"></script>
+    <!-- firebase initialization using modular SDK; assigns database to window.firebaseDB -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getDatabase } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyDIpdiakVDZl4pJW9-tpPGskGjI9aRjoes",
+        authDomain: "maramadakki-community-page.firebaseapp.com",
+        databaseURL: "https://maramadakki-community-page.firebaseio.com",
+        projectId: "maramadakki-community-page",
+        storageBucket: "maramadakki-community-page.firebasestorage.app",
+        messagingSenderId: "622990135347",
+        appId: "1:622990135347:web:67174962fb8ae29b635346",
+      };
+      const app = initializeApp(firebaseConfig);
+      window.firebaseDB = getDatabase(app);
+    </script>
     <script src="admin.js"></script>
   </body>
 </html>

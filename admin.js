@@ -26,9 +26,11 @@ async function syncWithServer(updateFn) {
   try {
     let serverData = {};
     if (typeof firebaseDB !== 'undefined') {
+      console.debug('syncWithServer: reading firebase /');
       const snap = await firebaseDB.ref('/').once('value');
       serverData = snap.val() || {};
     } else {
+      console.debug('syncWithServer: fetching /api/data');
       const resp = await fetch('/api/data');
       serverData = resp.ok ? await resp.json() : {};
     }
@@ -36,13 +38,15 @@ async function syncWithServer(updateFn) {
     updateFn(serverData);
 
     if (typeof firebaseDB !== 'undefined') {
+      console.debug('syncWithServer: writing firebase /', serverData);
       await firebaseDB.ref('/').set(serverData);
     } else {
-      await fetch('/api/data', {
+      const resp = await fetch('/api/data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(serverData),
       });
+      console.debug('syncWithServer: /api/data POST response', resp.status);
     }
 
     setStatus('Synchronized with backend', true);
@@ -218,10 +222,13 @@ window.addEventListener('load', async () => {
       if (!title || !description) return;
 
       newsItems = [...newsItems, { title, description }];
+      console.debug('newsForm submit, new array', newsItems);
       saveJson(NEWS_KEY, newsItems);
       // also update remote data if possible
       syncWithServer((data) => {
+        console.debug('syncWithServer callback, before update', data);
         data.newsItems = newsItems;
+        console.debug('syncWithServer callback, after update', data);
       });
       renderNewsList(newsItems);
 

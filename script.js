@@ -223,6 +223,7 @@ async function applyAdminContentOverrides() {
   try {
     // helper that renders the news array into the page
     const renderNews = (items) => {
+      console.debug('renderNews called with', items);
       const newsContainer = document.querySelector('#news .card-grid');
       if (!newsContainer) return;
       if (Array.isArray(items) && items.length > 0) {
@@ -284,18 +285,22 @@ async function applyAdminContentOverrides() {
     // polling the REST endpoint. the listeners update localStorage and the
     // DOM automatically, so we can just return immediately.
     if (typeof firebaseDB !== 'undefined') {
+      console.debug('applyAdminContentOverrides: firebaseDB detected');
       firebaseDB.ref('newsItems').on('value', (snap) => {
         const items = snap.val() || [];
+        console.debug('firebase newsItems listener fired', items);
         localStorage.setItem(NEWS_KEY, JSON.stringify(items));
         renderNews(items);
       });
       firebaseDB.ref('galleryItems').on('value', (snap) => {
         const items = snap.val() || [];
+        console.debug('firebase galleryItems listener fired', items);
         localStorage.setItem(GALLERY_KEY, JSON.stringify(items));
         renderGallery(items);
       });
       firebaseDB.ref('videoUrl').on('value', (snap) => {
         const url = snap.val() || '';
+        console.debug('firebase videoUrl listener fired', url);
         if (url) {
           localStorage.setItem(VIDEO_KEY, url);
           renderVideo(url);
