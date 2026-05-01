@@ -57,10 +57,37 @@
       </section>
 
       <section id="news" class="site-section">
-        <div class="announcement-board">
-          🔔 Village Meeting on Nov 15 at 5 PM near the temple.
+        <div class="section-heading">
+          <h2>Village News & Updates</h2>
+          <p>Stay informed with latest community announcements</p>
         </div>
-        <!-- news items injected by JavaScript; leave grid empty initially -->
+
+        <div class="announcements-carousel">
+          <div class="announcement-board">
+            🔔 <strong>Community Alert:</strong> Village Meeting on Nov 15 at 5 PM near the temple. All residents welcome.
+          </div>
+          <div class="announcement-board announcement-info">
+            📢 <strong>Notice:</strong> School Scholarship applications open till March 31. Merit-based awards for 50 students.
+          </div>
+          <div class="announcement-board announcement-warning">
+            ⚠️ <strong>Important:</strong> Water supply maintenance scheduled April 2-3. Make arrangements accordingly.
+          </div>
+          <div class="announcement-board announcement-success">
+            ✅ <strong>Update:</strong> New health camp on March 25 at PHC. Free checkups for all age groups.
+          </div>
+        </div>
+
+        <div class="news-search-container">
+          <input
+            type="text"
+            id="newsSearch"
+            placeholder="🔍 Search news by title or keyword..."
+            class="news-search-input"
+            aria-label="Search news articles"
+          />
+        </div>
+
+        
         <div class="card-grid"></div>
       </section>
 
@@ -69,20 +96,43 @@
           <h2>About Maramadakki</h2>
           <p>History & Map</p>
         </div>
+
         <div class="split">
-          <div>
+          <div class="about-content">
             <p>
               Maramadakki is a vibrant village known for its fertile fields,
               timeless temples, and close-knit community. Generations of farmers
               and artisans have preserved traditional wisdom while embracing
               modern progress.
             </p>
-            <p>
-              The village celebrates festivals together, protects its
-              environment, and supports education for every child, making
-              Maramadakki a model rural community.
-            </p>
+
+            <div class="about-disclaimer">
+              <h3>Disclaimer</h3>
+              <p>
+                This website is an independent community initiative created for
+                informational and communication purposes for the residents of
+                MARAMADAKKI village.
+              </p>
+              <p>
+                This website is not an official government website and is not
+                affiliated, associated, authorized, endorsed, or sponsored by
+                any government authority, local body, or administrative office.
+              </p>
+              <p>
+                All information provided on this website is published in good
+                faith and for general informational purposes only. While
+                efforts are made to keep the information accurate and up to
+                date, no warranties are made regarding the completeness,
+                reliability, or accuracy of the information.
+              </p>
+              <p>
+                The website administrators shall not be held responsible for any
+                loss, damage, or inconvenience arising from the use of
+                information provided on this website.
+              </p>
+            </div>
           </div>
+
           <div class="map-container">
             <!-- Google Maps embed searching for Maramadakki village -->
             <iframe
@@ -113,8 +163,8 @@
           />
         </div>
 
-        <div class="bus-destination-group" data-destination="trichy">
-          <h3 class="destination-title">🚌 To Trichy</h3>
+        <div class="bus-destination-group" data-destination="PUDUKKOTTAI">
+          <h3 class="destination-title">MARAMADAKKI To PUDUKKOTTAI</h3>
           <div class="table-wrapper">
             <table>
               <thead>
@@ -126,630 +176,525 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>5:45 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>5:00 AM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>6:30 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>7:15 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>8:00 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>8:45 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>9:30 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>10:15 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>11:00 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>11:45 AM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>12:30 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>1:15 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>2:00 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>2:45 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>3:30 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>4:15 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>5:00 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>5:45 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>6:30 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>7:15 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>8:00 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>8:45 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-101" data-destination="trichy">
-                  <td>Express Bus RT-101</td>
-                  <td>9:30 PM</td>
-                  <td>Lalgudi, Srirangam</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>6:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>6:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
                   <td>7:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>7:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
+                <tr data-bus-name="Express Bus" data-destination="PUDUKKOTTAI">
+                  <td>EXPRESS BUS</td>
                   <td>8:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                  <td>KOOLAYANKADU, VENKIDAKULAM</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>8:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>8:00 AM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>9:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>9:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="ORDINARY BUS" data-destination="PUDUKKOTTAI">
+                  <td>ORDINARY BUS</td>
+                  <td>8:50 AM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
                   <td>10:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>10:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>11:00 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>11:30 AM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
                   <td>12:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>12:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>12:50 PM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>1:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>2:45 PM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>1:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>3:45 PM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>2:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>4:45 PM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>2:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
+                <tr data-bus-name="3" data-destination="PUDUKKOTTAI">
+                  <td>3</td>
+                  <td>5:45 PM</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>3:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>3:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>4:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>4:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>5:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>5:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>6:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>6:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>7:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>7:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>8:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>8:30 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-102" data-destination="trichy">
-                  <td>Regular Bus RT-102</td>
-                  <td>9:00 PM</td>
-                  <td>Manapparai, Thuraiyur</td>
-                  <td>Trichy</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bus-destination-group" data-destination="pudukkottai">
-          <h3 class="destination-title">🚌 To Pudukkottai</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Bus Name</th>
-                  <th>Time</th>
-                  <th>Via</th>
-                  <th>Destination</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>6:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>7:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>8:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>9:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>10:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>11:10 AM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>12:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>1:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>2:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>3:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>4:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>5:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>6:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>7:10 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-201" data-destination="pudukkottai">
-                  <td>Regular Bus RT-201</td>
-                  <td>8:00 PM</td>
-                  <td>Keeranur, Alangudi</td>
-                  <td>Pudukkottai</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bus-destination-group" data-destination="aranthangi">
-          <h3 class="destination-title">🚌 To Aranthangi</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Bus Name</th>
-                  <th>Time</th>
-                  <th>Via</th>
-                  <th>Destination</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>6:30 AM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>8:00 AM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>9:30 AM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>11:00 AM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>12:30 PM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>2:00 PM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>3:30 PM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>5:00 PM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-301" data-destination="aranthangi">
-                  <td>Regular Bus RT-301</td>
-                  <td>6:30 PM</td>
-                  <td>Karaikudi, Devakottai</td>
-                  <td>Aranthangi</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bus-destination-group" data-destination="madurai">
-          <h3 class="destination-title">🚌 To Madurai</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Bus Name</th>
-                  <th>Time</th>
-                  <th>Via</th>
-                  <th>Destination</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>7:00 AM</td>
-                  <td>Madurai</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>9:00 AM</td>
-                  <td>Madurai</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>11:00 AM</td>
-                  <td>Madurai</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>1:00 PM</td>
-                  <td>Madurai</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>3:00 PM</td>
-                  <td>Madurai</td>
-                </tr>
-                <tr data-bus-name="Express Bus RT-401" data-destination="madurai">
-                  <td>Express Bus RT-401</td>
-                  <td>5:00 PM</td>
-                  <td>Madurai</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="bus-destination-group" data-destination="thanjavur">
-          <h3 class="destination-title">🚌 To Thanjavur</h3>
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Bus Name</th>
-                  <th>Time</th>
-                  <th>Via</th>
-                  <th>Destination</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>6:15 AM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>7:30 AM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>8:45 AM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>10:00 AM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>11:15 AM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>12:30 PM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>1:45 PM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>3:00 PM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>4:15 PM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
-                  <td>5:30 PM</td>
-                  <td>Thanjavur</td>
-                </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
+                <tr data-bus-name="Express Bus" data-destination="PUDUKKOTTAI">
+                  <td>Express Bus</td>
                   <td>6:45 PM</td>
-                  <td>Thanjavur</td>
+                  <td>ALANGUDI</td>
+                  <td>PUDUKKOTTAI</td>
                 </tr>
-                <tr data-bus-name="Regular Bus RT-501" data-destination="thanjavur">
-                  <td>Regular Bus RT-501</td>
+               
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bus-destination-group" data-destination="ARANTHANGI">
+          <h3 class="destination-title">MARAMADAKKI To ARANTHANGI</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bus Name</th>
+                  <th>Time</th>
+                  <th>Via</th>
+                  <th>Destination</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>5:30 AM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="5" data-destination="ARANTHANGI">
+                  <td>5</td>
+                  <td>7:00 AM</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="17" data-destination="ARANTHANGI">
+                  <td>17</td>
+                  <td>7:30 AM</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="AMMAN" data-destination="ARANTHANGI">
+                  <td>AMMAN</td>
+                  <td>8:00 AM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>8:15 AM</td>
+                  <td>AVANATHANKOTTAI</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="SCHOOL SPL" data-destination="ARANTHANGI">
+                  <td>SCHOOL SPL</td>
+                  <td>9:00 AM</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="THIRUVOTRIUR EXPRESS" data-destination="ARANTHANGI">
+                  <td>THIRUVOTRIUR EXPRESS</td>
+                  <td>9:45 AM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="AMMAN" data-destination="ARANTHANGI">
+                  <td>AMMAN</td>
+                  <td>10:00 AM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="5" data-destination="ARANTHANGI">
+                  <td>5</td>
+                  <td>11:00 AM</td>
+                  <td>SILATUR</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>11:00 PM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="13" data-destination="ARANTHANGI">
+                  <td>13</td>
+                  <td>12:00 PM</td>
+                  <td>AVANATHANKOTTAI</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="1" data-destination="ARANTHANGI ">
+                  <td>1</td>
+                  <td>12:50 PM</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>2:00 PM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="AMMAN" data-destination="ARANTHANGI">
+                  <td>AMMAN</td>
+                  <td>2:30 PM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                <tr data-bus-name="5" data-destination="ARANTHANGI">
+                  <td>5</td>
+                  <td>3:45 PM</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>4:15 PM</td>
+                  <td>AVANATHANKOTTAI</td>
+                  <td>ARANTHANGI</td>
+                  </tr>
+                   <tr data-bus-name="25" data-destination="ARANTHANGI">
+                  <td>25</td>
+                  <td>4:45 PM</td>
+                  <td>AVANATHANKOTTAI</td>
+                  <td>ARANTHANGI</td>
+                  </tr>
+                   <tr data-bus-name="AMMAN" data-destination="ARANTHANGI">
+                  <td>AMMAN</td>
+                  <td>5:00 PM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                  </tr>
+                   <tr data-bus-name="EXPRESS BUS" data-destination="ARANTHANGI">
+                  <td>EXPRESS BUS</td>
+                  <td>7:10 PM</td>
+                  <td>ERICHY</td>
+                  <td>ARANTHANGI</td>
+                </tr>
+                 <tr data-bus-name="5" data-destination="ARANTHANGI">
+                  <td>5</td>
                   <td>8:00 PM</td>
-                  <td>Thanjavur</td>
+                  <td>--</td>
+                  <td>ARANTHANGI</td>
                 </tr>
+
+                
+                
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bus-destination-group" data-destination="ALANGUDI">
+          <h3 class="destination-title">MARAMADAKKI To ALANGUDI</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bus Name</th>
+                  <th>Time</th>
+                  <th>Via</th>
+                  <th>Destination</th>
+                </tr>
+              </thead>
+               <tbody>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>5:00 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="AMMAN" data-destination="ALANGUDI">
+                  <td>AMMAN</td>
+                  <td>6:45 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>7:00 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="Express Bus" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>7:10 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>8:00 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                </tr>
+                <tr data-bus-name="ORDINARY BUS" data-destination="ALANGUDI">
+                  <td>ORDINARY BUS</td>
+                  <td>8:50 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="AMMAN" data-destination="ALANGUDI">
+                  <td>AMMAN</td>
+                  <td>9:15 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>9:45 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>10:00 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>11:00 AM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>12:00 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>12:30 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>12:50 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="AMMAN" data-destination="ALANGUDI">
+                  <td>AMMAN</td>
+                  <td>1:30 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="13" data-destination="ALANGUDI">
+                  <td>13</td>
+                  <td>1:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>2:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>3:15 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>3:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="AMMAN" data-destination="ALANGUDI">
+                  <td>AMMAN</td>
+                  <td>4:00 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>4:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>5:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>6:00 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="Express Bus" data-destination="ALANGUDI">
+                  <td>Express Bus</td>
+                  <td>6:45 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>7:30 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                <tr data-bus-name="3" data-destination="ALANGUDI">
+                  <td>3</td>
+                  <td>8:30 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>9:00 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                 <tr data-bus-name="EXPRESS BUS" data-destination="ALANGUDI">
+                  <td>EXPRESS BUS</td>
+                  <td>10:00 PM</td>
+                  <td>-</td>
+                  <td>ALANGUDI</td>
+                </tr>
+                
+
+              
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bus-destination-group" data-destination="KOTHAMANGALAM">
+          <h3 class="destination-title">MARAMADAKKI To KOTHAMANGALAM</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bus Name</th>
+                  <th>Time</th>
+                  <th>Via</th>
+                  <th>Destination</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-bus-name="17" data-destination="KOTHAMANGALAM">
+                  <td>17</td>
+                  <td>6:15 AM</td>
+                  <td>-</td>
+                  <td>KOTHAMANGALAM</td>
+                </tr>
+                <tr data-bus-name="A7" data-destination="KOTHAMANGALAM">
+                  <td>A7</td>
+                  <td>11:30 AM</td>
+                  <td>-</td>
+                  <td>KOTHAMANGALAM</td>
+                </tr>
+                <tr data-bus-name="A7" data-destination="KOTHAMANGALAM">
+                  <td>A7</td>
+                  <td>4:45 AM</td>
+                  <td>-</td>
+                  <td>KOTHAMANGALAM</td>
+                </tr>
+                <tr data-bus-name="17" data-destination="KOTHAMANGALAM">
+                  <td>17</td>
+                  <td>6:15 PM</td>
+                  <td>-</td>
+                  <td>KOTHAMANGALAM</td>
+                </tr>
+                <tr data-bus-name="17" data-destination="KOTHAMANGALAM">
+                  <td>17</td>
+                  <td>9:30 PM</td>
+                  <td>-</td>
+                  <td>KOTHAMANGALAM</td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bus-destination-group" data-destination="PERAVURANI">
+          <h3 class="destination-title">MARAMADAKKI To PERAVURANI</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bus Name</th>
+                  <th>Time</th>
+                  <th>Via</th>
+                  <th>Destination</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-bus-name="A7" data-destination="PERAVURANI">
+                  <td>A7</td>
+                  <td>11:30 AM</td>
+                  <td>-</td>
+                  <td>PERAVURANI</td>
+                </tr>
+                <tr data-bus-name="A7" data-destination="PERAVURANI">
+                  <td>A7</td>
+                  <td>4:45 PM</td>
+                  <td>-</td>
+                  <td>PERAVURANI</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="bus-destination-group" data-destination="VADAKADU">
+          <h3 class="destination-title">MARAMADAKKI To VADAKADU</h3>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bus Name</th>
+                  <th>Time</th>
+                  <th>Via</th>
+                  <th>Destination</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-bus-name="17" data-destination="VADAKADU">
+                  <td>17</td>
+                  <td>6:15 AM</td>
+                  <td>-</td>
+                  <td>VADAKADU</td>
+                </tr>
+                <tr data-bus-name="17" data-destination="VADAKADU">
+                  <td>17</td>
+                  <td>6:15 PM</td>
+                  <td>-</td>
+                  <td>VADAKADU</td>
+                </tr>
+                
               </tbody>
             </table>
           </div>
@@ -759,103 +704,177 @@
       <section id="services" class="site-section">
         <div class="section-heading">
           <h2>Public Services</h2>
-          <p>Schools, healthcare, civic offices</p>
+          <p>Schools, healthcare, civic offices & more</p>
         </div>
-        <div class="table-wrapper two-up">
-          <table>
-            <thead>
-              <tr>
-                <th>School</th>
-                <th>Contact</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Govt Primary School</td>
-                <td>04339-12345</td>
-              </tr>
-              <tr>
-                <td>Maramadakki High School</td>
-                <td>04339-56789</td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <th>Healthcare</th>
-                <th>Timings</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Primary Health Center</td>
-                <td>24/7 emergency</td>
-              </tr>
-              <tr>
-                <td>Ayush Clinic</td>
-                <td>9 AM – 5 PM</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="table-wrapper two-up">
-          <table>
-            <thead>
-              <tr>
-                <th>Offices</th>
-                <th>Hours</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Panchayat Office</td>
-                <td>10 AM – 5 PM</td>
-              </tr>
-              <tr>
-                <td>VAO Office</td>
-                <td>10 AM – 4 PM</td>
-              </tr>
-            </tbody>
-          </table>
-          <table>
-            <thead>
-              <tr>
-                <th>Post Office</th>
-                <th>Services</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Maramadakki Post</td>
-                <td>Mail, banking, parcels</td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">🎓</div>
+            <h3>Govt Primary School</h3>
+            <p class="service-category">Education</p>
+            <p class="service-description">Quality primary education for children ages 5–11.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-12345</div>
+              <div><strong>📍 Location:</strong> Near temple, main road</div>
+              <div><strong>🕐 Hours:</strong> 9 AM – 4 PM, Mon–Fri</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📚</div>
+            <h3>Maramadakki High School</h3>
+            <p class="service-category">Education</p>
+            <p class="service-description">High school serving grades 9–12, with science & arts streams.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-56789</div>
+              <div><strong>📍 Location:</strong> East side of village</div>
+              <div><strong>🕐 Hours:</strong> 8 AM – 3 PM, Mon–Fri</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">⚕️</div>
+            <h3>Primary Health Center</h3>
+            <p class="service-category">Healthcare</p>
+            <p class="service-description">24/7 emergency care and outpatient services.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-9999</div>
+              <div><strong>📍 Location:</strong> Central village</div>
+              <div><strong>🕐 Hours:</strong> 24/7 (24 hours)</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🌿</div>
+            <h3>Ayush Clinic</h3>
+            <p class="service-category">Healthcare</p>
+            <p class="service-description">Ayurvedic and natural wellness treatments.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-88888</div>
+              <div><strong>📍 Location:</strong> Market street</div>
+              <div><strong>🕐 Hours:</strong> 9 AM – 5 PM, daily</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏛️</div>
+            <h3>Panchayat Office</h3>
+            <p class="service-category">Administration</p>
+            <p class="service-description">Local governance, land records, and civic matters.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-77777</div>
+              <div><strong>📍 Location:</strong> Main square</div>
+              <div><strong>🕐 Hours:</strong> 10 AM – 5 PM, Mon–Fri</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">💼</div>
+            <h3>VAO Office</h3>
+            <p class="service-category">Administration</p>
+            <p class="service-description">Village Administrative Officer for certificates & permissions.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-66666</div>
+              <div><strong>📍 Location:</strong> Main square</div>
+              <div><strong>🕐 Hours:</strong> 10 AM – 4 PM, Mon–Sat</div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📬</div>
+            <h3>Maramadakki Post Office</h3>
+            <p class="service-category">Mail & Banking</p>
+            <p class="service-description">Postal services, banking, and parcel delivery.</p>
+            <div class="service-details">
+              <div><strong>📞 Contact:</strong> 04339-55555</div>
+              <div><strong>📍 Location:</strong> Near bus stand</div>
+              <div><strong>🕐 Hours:</strong> 9:30 AM – 5 PM, Mon–Sat</div>
+            </div>
+          </article>
         </div>
       </section>
 
       <section id="business" class="site-section">
         <div class="section-heading">
           <h2>Local Businesses</h2>
-          <p>Support our community entrepreneurs</p>
+          <p>Support our community entrepreneurs & enterprises</p>
         </div>
         <div class="business-grid">
           <article class="business-card">
+            <div class="business-icon">🌾</div>
             <h3>Anbu Rice Mill</h3>
-            <p>Freshly milled rice and grains.</p>
+            <p class="business-category">Agriculture & Grains</p>
+            <p class="business-description">Freshly milled rice and quality grains delivered to your doorstep.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Mill Road, Near Market</div>
+              <div><strong>📞 Contact:</strong> 04339-31234</div>
+              <div><strong>🕐 Hours:</strong> 6 AM – 6 PM, Daily</div>
+            </div>
+            <span class="business-badge">Popular</span>
           </article>
+
           <article class="business-card">
+            <div class="business-icon">🧵</div>
             <h3>Selvi Textiles</h3>
-            <p>Handloom sarees and tailoring services.</p>
+            <p class="business-category">Handloom & Fashion</p>
+            <p class="business-description">Authentic handloom sarees and expert tailoring services for all occasions.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Main Market Square</div>
+              <div><strong>📞 Contact:</strong> 04339-45678</div>
+              <div><strong>🕐 Hours:</strong> 9 AM – 8 PM, Mon–Sat</div>
+            </div>
+            <span class="business-badge">Recommended</span>
           </article>
+
           <article class="business-card">
+            <div class="business-icon">🥬</div>
             <h3>Green Fields Organics</h3>
-            <p>Organic vegetables & weekly farmers market.</p>
+            <p class="business-category">Organic Produce</p>
+            <p class="business-description">Fresh organic vegetables and farmers market every Sunday morning.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Temple Street</div>
+              <div><strong>📞 Contact:</strong> 04339-98765</div>
+              <div><strong>🕐 Hours:</strong> 7 AM – 10 AM (Farmers Market)</div>
+            </div>
+            <span class="business-badge">Eco-Friendly</span>
           </article>
+
           <article class="business-card">
+            <div class="business-icon">🌱</div>
             <h3>AgriTech Services</h3>
-            <p>Soil testing and irrigation support.</p>
+            <p class="business-category">Agri-Support & Tech</p>
+            <p class="business-description">Soil testing, irrigation consulting, and modern farming solutions.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Community Center</div>
+              <div><strong>📞 Contact:</strong> 04339-55432</div>
+              <div><strong>🕐 Hours:</strong> 8 AM – 5 PM, Mon–Fri</div>
+            </div>
+            <span class="business-badge">Expert</span>
+          </article>
+
+          <article class="business-card">
+            <div class="business-icon">🍲</div>
+            <h3>Maramadakki Café</h3>
+            <p class="business-category">Food & Beverages</p>
+            <p class="business-description">Authentic local cuisine and traditional recipes with modern comfort.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Bus Stand Area</div>
+              <div><strong>📞 Contact:</strong> 04339-77334</div>
+              <div><strong>🕐 Hours:</strong> 7 AM – 9 PM, Daily</div>
+            </div>
+            <span class="business-badge">New</span>
+          </article>
+
+          <article class="business-card">
+            <div class="business-icon">🎨</div>
+            <h3>Artisan Crafts Studio</h3>
+            <p class="business-category">Handmade Crafts & Art</p>
+            <p class="business-description">Traditional pottery, paintings, and handicrafts made by local artisans.</p>
+            <div class="business-details">
+              <div><strong>📍 Location:</strong> Heritage Lane</div>
+              <div><strong>📞 Contact:</strong> 04339-66789</div>
+              <div><strong>🕐 Hours:</strong> 10 AM – 6 PM, Tue–Sun</div>
+            </div>
+            <span class="business-badge">Featured</span>
           </article>
         </div>
       </section>
@@ -976,24 +995,6 @@
       </div>
     </footer>
 
-    <!-- firebase initialization using modular SDK; assigns database to window.firebaseDB -->
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
-      import { getDatabase } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-database.js";
-      // configuration copied from firebase-config.js (could also import)
-      const firebaseConfig = {
-        apiKey: "AIzaSyDIpdiakVDZl4pJW9-tpPGskGjI9aRjoes",
-        authDomain: "maramadakki-community-page.firebaseapp.com",
-        databaseURL: "https://maramadakki-community-page.firebaseio.com",
-        projectId: "maramadakki-community-page",
-        storageBucket: "maramadakki-community-page.firebasestorage.app",
-        messagingSenderId: "622990135347",
-        appId: "1:622990135347:web:67174962fb8ae29b635346",
-      };
-
-      const app = initializeApp(firebaseConfig);
-      window.firebaseDB = getDatabase(app);
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
