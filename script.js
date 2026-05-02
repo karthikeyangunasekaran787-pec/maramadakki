@@ -1,5 +1,5 @@
 const sections = Array.from(document.querySelectorAll('.site-section'));
-const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
+const navLinks = Array.from(document.querySelectorAll('.main-nav a, .footer-nav a'));
 const exploreBtn = document.querySelector('.explore-btn');
 
 const logoEl = document.querySelector('.logo');
@@ -26,7 +26,7 @@ const setActiveSection = (targetId) => {
 navLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
-    const targetId = link.dataset.target;
+    const targetId = link.dataset.target || link.getAttribute('href')?.substring(1);
     if (targetId) {
       setActiveSection(targetId);
     }

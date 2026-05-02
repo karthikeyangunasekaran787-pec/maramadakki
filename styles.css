@@ -253,6 +253,83 @@ main {
   box-shadow: var(--shadow);
 }
 
+.ad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.ad-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(29, 107, 66, 0.16);
+  border-radius: 24px;
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.ad-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(29, 107, 66, 0.26);
+}
+
+.ad-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.ad-badge-secondary {
+  background: linear-gradient(135deg, #f7b733, #e87f04);
+}
+
+.ad-badge-tertiary {
+  background: linear-gradient(135deg, #1d6b42, #16a085);
+}
+
+.ad-card h3 {
+  margin-bottom: 0.85rem;
+  font-size: 1.35rem;
+  color: var(--text);
+}
+
+.ad-card p {
+  margin-bottom: 1.4rem;
+  color: rgba(18, 48, 38, 0.78);
+  line-height: 1.7;
+}
+
+.ad-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  color: rgba(18, 48, 38, 0.75);
+  font-size: 0.95rem;
+}
+
+.ad-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(29, 107, 66, 0.08);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.ad-footer a:hover {
+  background: rgba(29, 107, 66, 0.16);
+}
+
 .section-heading {
   margin-bottom: 2rem;
 }
@@ -991,7 +1068,36 @@ th {
     padding: 0;
   }
   .hero {
-    height: 60vh;
+    min-height: calc(100vh - 3.5rem);
+    height: auto;
+  }
+  .hero-video {
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-overlay {
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    padding-top: 4rem;
+    overflow-wrap: break-word;
+  }
+  .hero-welcome {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+    letter-spacing: 0.15rem;
+    line-height: 1.05;
+    max-width: 95%;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .site-section {

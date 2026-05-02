@@ -26,7 +26,7 @@
         <a href="#about" data-target="about">ℹ️ About</a>
         <a href="#bus" data-target="bus">🕒 Bus Timings</a>
         <a href="#services" data-target="services">🏢 Public Services</a>
-        <a href="#business" data-target="business">🛒 Businesses</a>
+        <a href="#ads" data-target="ads">📣 Advertisements</a>
         <a href="#video" data-target="video">🎥 Village Video</a>
         <a href="#gallery" data-target="gallery">🖼️ Gallery</a>
         <a href="#contact" data-target="contact">📧 Contact</a>
@@ -77,19 +77,6 @@
             ✅ <strong>Update:</strong> New health camp on March 25 at PHC. Free checkups for all age groups.
           </div>
         </div>
-
-        <div class="news-search-container">
-          <input
-            type="text"
-            id="newsSearch"
-            placeholder="🔍 Search news by title or keyword..."
-            class="news-search-input"
-            aria-label="Search news articles"
-          />
-        </div>
-
-        
-        <div class="card-grid"></div>
       </section>
 
       <section id="about" class="site-section">
@@ -153,6 +140,7 @@
         <div class="section-heading">
           <h2>Bus Timings</h2>
           <p>Departures from Maramadakki</p>
+          <p>Bus timings may vary depending on availability</p>
         </div>
 
         <div class="bus-search-container">
@@ -653,6 +641,12 @@
                 </tr>
               </thead>
               <tbody>
+                <tr data-bus-name="EXPRESS BUS" data-destination="PERAVURANI">
+                  <td>A7</td>
+                  <td>6:00 AM</td>
+                  <td>THIRUNALUR,KEERAMANGALAM</td>
+                  <td>PERAVURANI</td>
+                </tr>
                 <tr data-bus-name="A7" data-destination="PERAVURANI">
                   <td>A7</td>
                   <td>11:30 AM</td>
@@ -794,88 +788,47 @@
         </div>
       </section>
 
-      <section id="business" class="site-section">
+      <section id="ads" class="site-section">
         <div class="section-heading">
-          <h2>Local Businesses</h2>
-          <p>Support our community entrepreneurs & enterprises</p>
+          <h2>Community Spotlight</h2>
+          <p>Discover local offerings, announcements, and special highlights.</p>
         </div>
-        <div class="business-grid">
-          <article class="business-card">
-            <div class="business-icon">🌾</div>
-            <h3>Anbu Rice Mill</h3>
-            <p class="business-category">Agriculture & Grains</p>
-            <p class="business-description">Freshly milled rice and quality grains delivered to your doorstep.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Mill Road, Near Market</div>
-              <div><strong>📞 Contact:</strong> 04339-31234</div>
-              <div><strong>🕐 Hours:</strong> 6 AM – 6 PM, Daily</div>
+
+        <div class="ad-grid">
+          <article class="ad-card">
+            <div class="ad-badge">Local Special</div>
+            <h3>Fresh Farm Produce</h3>
+            <p>
+              Seasonal vegetables and fruits from Maramadakki farms, available every Saturday morning near the temple square.
+            </p>
+            <div class="ad-footer">
+              <span>Contact: 98765 43210</span>
+              <a href="tel:9876543210">Call Now</a>
             </div>
-            <span class="business-badge">Popular</span>
           </article>
 
-          <article class="business-card">
-            <div class="business-icon">🧵</div>
-            <h3>Selvi Textiles</h3>
-            <p class="business-category">Handloom & Fashion</p>
-            <p class="business-description">Authentic handloom sarees and expert tailoring services for all occasions.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Main Market Square</div>
-              <div><strong>📞 Contact:</strong> 04339-45678</div>
-              <div><strong>🕐 Hours:</strong> 9 AM – 8 PM, Mon–Sat</div>
+          <article class="ad-card">
+            <div class="ad-badge ad-badge-secondary">Health Camp</div>
+            <h3>Free Health Screening</h3>
+            <p>
+              Join the free village health camp this Sunday for blood pressure, sugar, and general wellness checks for all ages.
+            </p>
+            <div class="ad-footer">
+              <span>Venue: PHC Lawn</span>
+              <a href="#contact">Learn More</a>
             </div>
-            <span class="business-badge">Recommended</span>
           </article>
 
-          <article class="business-card">
-            <div class="business-icon">🥬</div>
-            <h3>Green Fields Organics</h3>
-            <p class="business-category">Organic Produce</p>
-            <p class="business-description">Fresh organic vegetables and farmers market every Sunday morning.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Temple Street</div>
-              <div><strong>📞 Contact:</strong> 04339-98765</div>
-              <div><strong>🕐 Hours:</strong> 7 AM – 10 AM (Farmers Market)</div>
+          <article class="ad-card">
+            <div class="ad-badge ad-badge-tertiary">Offer</div>
+            <h3>Handmade Crafts</h3>
+            <p>
+              Traditional handicrafts and woven goods from local artisans. Perfect gifts and village souvenirs.
+            </p>
+            <div class="ad-footer">
+              <span>Shop at Local Bazaar</span>
+              <a href="#contact">See Details</a>
             </div>
-            <span class="business-badge">Eco-Friendly</span>
-          </article>
-
-          <article class="business-card">
-            <div class="business-icon">🌱</div>
-            <h3>AgriTech Services</h3>
-            <p class="business-category">Agri-Support & Tech</p>
-            <p class="business-description">Soil testing, irrigation consulting, and modern farming solutions.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Community Center</div>
-              <div><strong>📞 Contact:</strong> 04339-55432</div>
-              <div><strong>🕐 Hours:</strong> 8 AM – 5 PM, Mon–Fri</div>
-            </div>
-            <span class="business-badge">Expert</span>
-          </article>
-
-          <article class="business-card">
-            <div class="business-icon">🍲</div>
-            <h3>Maramadakki Café</h3>
-            <p class="business-category">Food & Beverages</p>
-            <p class="business-description">Authentic local cuisine and traditional recipes with modern comfort.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Bus Stand Area</div>
-              <div><strong>📞 Contact:</strong> 04339-77334</div>
-              <div><strong>🕐 Hours:</strong> 7 AM – 9 PM, Daily</div>
-            </div>
-            <span class="business-badge">New</span>
-          </article>
-
-          <article class="business-card">
-            <div class="business-icon">🎨</div>
-            <h3>Artisan Crafts Studio</h3>
-            <p class="business-category">Handmade Crafts & Art</p>
-            <p class="business-description">Traditional pottery, paintings, and handicrafts made by local artisans.</p>
-            <div class="business-details">
-              <div><strong>📍 Location:</strong> Heritage Lane</div>
-              <div><strong>📞 Contact:</strong> 04339-66789</div>
-              <div><strong>🕐 Hours:</strong> 10 AM – 6 PM, Tue–Sun</div>
-            </div>
-            <span class="business-badge">Featured</span>
           </article>
         </div>
       </section>
@@ -885,14 +838,29 @@
           <h2>Village Stories</h2>
           <p>Watch scenes from the fields</p>
         </div>
+
+
+
         <div class="video-embed">
           <iframe
-            src="https://www.youtube.com/embed/mQER0A0ej0M?autoplay=0&mute=1&rel=0"
+            src="https://youtu.be/UmKTKFrmbaA?si=4CvJvQ1DOPp0FViZ"
+            title="JALLIKATTU IN MARAMADAKKI"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          
+        </div>
+
+         <div class="video-embed">
+          <iframe
+            src="https://youtu.be/9Fi-BbrdAfY?si=CwhOAFw2F9wX4LXo"
             title="Life in the rice fields"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
           ></iframe>
+          
         </div>
       </section>
 
@@ -904,25 +872,25 @@
         <div class="gallery-grid">
           <figure>
             <img
-              src="https://images.unsplash.com/photo-1523419409543-0c1df022bddb?auto=format&fit=crop&w=800&q=80"
+              src="https://th.bing.com/th/id/OIP.YTUqeX8a7_oF4CVx84yeAAHaFj?w=249&h=187&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
               alt="Fields at dawn"
             />
           </figure>
           <figure>
             <img
-              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80"
+              src="https://th.bing.com/th/id/OIP.X5LgNRM4nCniEO5eQRW1sQAAAA?w=115&h=182&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
               alt="Village streets"
             />
           </figure>
           <figure>
             <img
-              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Paddy_field_Maramadakki_1.jpg/500px-Paddy_field_Maramadakki_1.jpg"
               alt="Temple celebrations"
             />
           </figure>
           <figure>
             <img
-              src="https://images.unsplash.com/photo-1500534314210-61480e95cb3c?auto=format&fit=crop&w=800&q=80"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjfBXNIy41i4_5t3F4No5t8PeBpRwVxNdIhg&s"
               alt="Paddy fields"
             />
           </figure>
@@ -997,9 +965,9 @@
       <div class="footer-content">
         <p>&copy; 2026 Maramadakki Village community. All rights reserved.</p>
         <nav class="footer-nav">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#home" data-target="home">Home</a>
+          <a href="#about" data-target="about">About</a>
+          <a href="#contact" data-target="contact">Contact</a>
         </nav>
         <p class="footer-note">
           Built by the Maramadakki community
