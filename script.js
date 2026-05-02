@@ -33,6 +33,17 @@ navLinks.forEach((link) => {
   });
 });
 
+const heroActionBtns = Array.from(document.querySelectorAll('.hero-action-btn'));
+heroActionBtns.forEach((btn) => {
+  btn.addEventListener('click', (event) => {
+    event.preventDefault();
+    const targetId = btn.dataset.target || btn.getAttribute('href')?.substring(1);
+    if (targetId) {
+      setActiveSection(targetId);
+    }
+  });
+});
+
 // Mobile menu toggle behaviour
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
