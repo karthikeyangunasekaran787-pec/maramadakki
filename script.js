@@ -119,9 +119,13 @@ if (exploreBtn) {
   exploreBtn.addEventListener('click', () => setActiveSection(exploreBtn.dataset.target || 'news'));
 }
 
-// subtle fade-in when the page loads
-window.addEventListener('load', () => {
+// show main content as soon as DOM is ready (faster than waiting for all resources)
+document.addEventListener('DOMContentLoaded', () => {
   setActiveSection('home');
+});
+
+// keep adding a `loaded` class after full load for subtle fade-in effects
+window.addEventListener('load', () => {
   setTimeout(() => {
     document.body.classList.add('loaded');
   }, 200);
@@ -199,7 +203,7 @@ if (contactForm) {
     const fromEmail = emailInput ? emailInput.value.trim() : '';
     const message = messageInput ? messageInput.value.trim() : '';
 
-    const toEmail = 'maramadakki@gmail.com';
+    const toEmail = 'hopefullhero07@gmail.com';
     const subject = encodeURIComponent(
       `Message from ${name || 'Maramadakki website visitor'}`
     );
@@ -215,4 +219,101 @@ if (contactForm) {
     window.location.href = `mailto:${toEmail}?subject=${subject}&body=${body}`;
   });
 }
+
+  /* Poster carousel: simple, accessible, mobile-first. Update poster images by editing the <figure class="poster-slide"> elements in the HTML. */
+  function initPosterCarousels() {
+    const carousels = Array.from(document.querySelectorAll('.poster-carousel'));
+
+    carousels.forEach((carousel) => {
+      const track = carousel.querySelector('.poster-track');
+      const slides = Array.from(carousel.querySelectorAll('.poster-slide'));
+      const prevBtn = carousel.querySelector('.poster-prev');
+      const nextBtn = carousel.querySelector('.poster-next');
+      const dotsContainer = carousel.querySelector('.poster-dots');
+      if (!track || slides.length === 0) return;
+
+      let index = 0;
+      let autoplay = true;
+      let intervalId = null;
+
+      function goTo(i, instantly = false) {
+        index = (i + slides.length) % slides.length;
+        const offset = -index * carousel.clientWidth;
+        if (instantly) track.style.transition = 'none'; else track.style.transition = '';
+        track.style.transform = `translateX(${offset}px)`;
+        updateDots();
+        // restore transition after instant jump
+        if (instantly) requestAnimationFrame(() => { requestAnimationFrame(() => { track.style.transition = ''; }); });
+      }
+
+      function next() { goTo(index + 1); }
+      function prev() { goTo(index - 1); }
+
+      function startAutoplay() {
+        if (intervalId) clearInterval(intervalId);
+        if (!autoplay) return;
+        intervalId = setInterval(next, 4500);
+      }
+
+      function stopAutoplay() { if (intervalId) { clearInterval(intervalId); intervalId = null; } }
+
+      // build dots
+      dotsContainer.innerHTML = '';
+      slides.forEach((s, i) => {
+        const btn = document.createElement('button');
+        btn.setAttribute('aria-label', `Show poster ${i + 1}`);
+        btn.addEventListener('click', () => { goTo(i); stopAutoplay(); });
+        dotsContainer.appendChild(btn);
+      });
+
+      function updateDots() {
+        const dots = Array.from(dotsContainer.children);
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      }
+
+      // attach controls
+      if (nextBtn) nextBtn.addEventListener('click', () => { next(); stopAutoplay(); });
+      if (prevBtn) prevBtn.addEventListener('click', () => { prev(); stopAutoplay(); });
+
+      // touch support
+      let startX = null;
+      let moved = false;
+      track.addEventListener('touchstart', (e) => {
+        stopAutoplay();
+        startX = e.touches[0].clientX;
+        moved = false;
+      }, { passive: true });
+
+      track.addEventListener('touchmove', (e) => {
+        if (startX === null) return;
+        const dx = e.touches[0].clientX - startX;
+        if (Math.abs(dx) > 10) moved = true;
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        if (!moved) { startAutoplay(); startX = null; return; }
+        const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : null;
+        if (endX === null || startX === null) { startAutoplay(); startX = null; return; }
+        const dx = endX - startX;
+        if (dx < -40) next(); else if (dx > 40) prev();
+        startX = null; moved = false; startAutoplay();
+      });
+
+      // update on resize to keep alignment
+      window.addEventListener('resize', () => goTo(index, true));
+
+      // initialize
+      goTo(0, true);
+      updateDots();
+      startAutoplay();
+
+      // pause on focus for accessibility
+      carousel.addEventListener('focusin', stopAutoplay);
+      carousel.addEventListener('focusout', startAutoplay);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initPosterCarousels();
+  });
 
